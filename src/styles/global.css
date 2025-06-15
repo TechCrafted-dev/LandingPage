@@ -1,1 +1,13 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+html,
+body {
+    background: #111;
+    height: 200vh;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+    color: white;
+    margin: 0;
+    width: 100%;
+}

@@ -1,0 +1,83 @@
+---
+
+---
+
+<button id="themeToggle"
+        aria-label="Cambiar tema"
+        class="fixed top-4 right-4 z-50 p-2 transition-colors
+               text-black dark:text-white">
+  <!-- Icono que cambia según el estado -->
+  <i id="themeIcon" class="fa-solid fa-circle-half-stroke"></i>
+</button>
+
+<!-- Lógica cliente -->
+<script client:load>
+  /** Clave de almacenamiento */
+  const STORAGE_KEY = 'theme-preference';        // 'light' | 'dark' | 'system'
+
+  /** Elementos DOM */
+  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+  const btn  = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeIcon');
+
+  /** MediaQuery para saber si el SO está en dark */
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+  /** Lee el último valor o “system” por defecto */
+  let theme = localStorage.getItem(STORAGE_KEY) || 'system';
+
+  /** Aplica la elección al <html> y al icono */
+  function applyTheme(value) {
+    if (value === 'light') {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+
+    } else if (value === 'dark') {
+      document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
+
+    } else { // system → sin override; obedece al SO
+      document.documentElement.classList.toggle('dark', mq.matches);
+      document.documentElement.classList.toggle('light', !mq.matches);
+    }
+
+    updateIcon(value);
+  }
+
+  /** Actualiza icono + tooltip */
+  function updateIcon(value) {
+    icon.className =
+      'fa-solid ' +
+      (value === 'light'  ? 'fa-sun'                 // ☀️
+       : value === 'dark' ? 'fa-moon'                // 🌙
+       :                   'fa-circle-half-stroke'); // 🌓
+    btn.title = `${value}`;                          // tooltip
+  }
+
+  /** Devuelve el próximo estado al hacer clic */
+  const next = (value) =>
+    value === 'light'  ? 'dark'
+    : value === 'dark' ? 'system'
+    :                   'light';
+
+  /* ——— Estado inicial ——— */
+  applyTheme(theme);
+
+  /* ——— Reactivar “system” cuando el SO cambia ——— */
+  mq.addEventListener('change', () => {
+    if (theme === 'system') applyTheme('system');
+  });
+
+  /* ——— Click = siguiente estado ——— */
+  btn.addEventListener('click', () => {
+    theme = next(theme);
+    localStorage.setItem(STORAGE_KEY, theme);
+    applyTheme(theme);
+  });
+
+  /* Suscribe al cambio de tema del SO */
+  systemTheme.addEventListener('change', () => {
+      if (theme === 'system') applyTheme('system');
+  });
+
+</script>
