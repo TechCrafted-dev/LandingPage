@@ -6,11 +6,9 @@
         aria-label="Cambiar tema"
         class="fixed top-4 right-4 z-50 p-2 transition-colors
                text-black dark:text-white">
-  <!-- Icono que cambia según el estado -->
   <i id="themeIcon" class="fa-solid fa-circle-half-stroke"></i>
 </button>
 
-<!-- Lógica cliente -->
 <script client:load>
   /** Clave de almacenamiento */
   const STORAGE_KEY = 'theme-preference';        // 'light' | 'dark' | 'system'
