@@ -9,14 +9,14 @@
   <i id="themeIcon" class="fa-solid fa-circle-half-stroke"></i>
 </button>
 
-<script client:load>
+<script>
   /** Clave de almacenamiento */
   const STORAGE_KEY = 'theme-preference';        // 'light' | 'dark' | 'system'
 
   /** Elementos DOM */
   const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
-  const btn  = document.getElementById('themeToggle');
-  const icon = document.getElementById('themeIcon');
+  const btn  = document.getElementById('themeToggle') || document.createElement('button');
+  const icon = document.getElementById('themeIcon') || document.createElement('icon');
 
   /** MediaQuery para saber si el SO está en dark */
   const mq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -25,7 +25,7 @@
   let theme = localStorage.getItem(STORAGE_KEY) || 'system';
 
   /** Aplica la elección al <html> y al icono */
-  function applyTheme(value) {
+  function applyTheme({value}: { value: any }) {
     if (value === 'light') {
       document.documentElement.classList.remove('dark');
       document.documentElement.classList.add('light');
@@ -39,11 +39,11 @@
       document.documentElement.classList.toggle('light', !mq.matches);
     }
 
-    updateIcon(value);
+    updateIcon({value: value});
   }
 
   /** Actualiza icono + tooltip */
-  function updateIcon(value) {
+  function updateIcon({value}: { value: any }) {
     icon.className =
       'fa-solid ' +
       (value === 'light'  ? 'fa-sun'                 // ☀️
@@ -53,29 +53,29 @@
   }
 
   /** Devuelve el próximo estado al hacer clic */
-  const next = (value) =>
+  const next = ({value}: { value: any }) =>
     value === 'light'  ? 'dark'
     : value === 'dark' ? 'system'
     :                   'light';
 
   /* ——— Estado inicial ——— */
-  applyTheme(theme);
+  applyTheme({value: theme});
 
   /* ——— Reactivar “system” cuando el SO cambia ——— */
   mq.addEventListener('change', () => {
-    if (theme === 'system') applyTheme('system');
+    if (theme === 'system') applyTheme({value: 'system'});
   });
 
-  /* ——— Click = siguiente estado ——— */
+  /* ——— Clic = siguiente estado ——— */
   btn.addEventListener('click', () => {
-    theme = next(theme);
+    theme = next({value: theme});
     localStorage.setItem(STORAGE_KEY, theme);
-    applyTheme(theme);
+    applyTheme({value: theme});
   });
 
   /* Suscribe al cambio de tema del SO */
   systemTheme.addEventListener('change', () => {
-      if (theme === 'system') applyTheme('system');
+      if (theme === 'system') applyTheme({value: 'system'});
   });
 
 </script>
