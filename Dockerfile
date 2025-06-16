@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 ############################
-# Stage 1 – Build the site #
+# Stage 1 – Build the site #
 ############################
 FROM node:20-alpine AS builder
 
@@ -9,8 +9,10 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Install dependencies
-COPY package*.json .
-RUN npm ci --production=false
+COPY package*.json package-lock*.json ./
+
+# Usamos 'npm install' para instalar dependencias.
+RUN npm install
 
 # Copy the rest of the project files
 COPY . .
@@ -19,7 +21,7 @@ COPY . .
 RUN npx astro build
 
 ####################################
-# Stage 2 – Production web server  #
+# Stage 2 – Production web server  #
 ####################################
 FROM nginx:1.27-alpine AS production
 
@@ -27,7 +29,6 @@ FROM nginx:1.27-alpine AS production
 RUN rm /etc/nginx/conf.d/default.conf
 
 # Copy our custom Nginx virtual‑host configuration
-# (create this file at build‑time:  nginx/site.conf)
 COPY nginx/site.conf /etc/nginx/conf.d/
 
 # Copy the static build produced by Astro
