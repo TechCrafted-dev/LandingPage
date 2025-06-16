@@ -1,0 +1,29 @@
+# Carpetas pesadas o generadas automáticamente
+node_modules
+dist
+.astro
+.pnpm
+.pnpm-debug.log
+
+# Archivos y carpetas de control de versiones
+.git
+.gitignore
+
+# Archivos de entorno y configuración local
+.env
+*.env
+.idea
+.vscode
+
+# Documentación o archivos que no se usan en producción
+README.md
+*.md
+
+# Archivos de configuración de despliegue que no necesitas copiar
+Dockerfile
+docker-compose.yml
+deploy.sh
+
+# Archivos de lock (opcional si no quieres usarlos en build)
+pnpm-lock.yaml
+pnpm-workspace.yaml
