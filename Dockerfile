@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 ############################
-# Stage 1 – Build the site #
+# Stage 1 – Build the site #
 ############################
 FROM node:20-alpine AS builder
 
@@ -21,7 +21,7 @@ COPY . .
 RUN npx astro build
 
 ####################################
-# Stage 2 – Production web server  #
+# Stage 2 – Production web server  #
 ####################################
 FROM nginx:1.27-alpine AS production
 
