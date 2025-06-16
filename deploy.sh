@@ -10,6 +10,6 @@ echo "Construyendo nueva imagen..."
 docker build -t $APP_NAME .
 
 echo "Iniciando contenedor..."
-docker run -d -p $PORT:4321 --name $APP_NAME $APP_NAME
+docker run -d -p $PORT:80 --name $APP_NAME $APP_NAME
 
 echo "Despliegue completo en http://10.0.10.10:$PORT"
