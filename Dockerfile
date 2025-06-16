@@ -1,24 +1,39 @@
-# build stage
+# syntax=docker/dockerfile:1
+
+############################
+# Stage 1 – Build the site #
+############################
 FROM node:20-alpine AS builder
+
+# System settings
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+
+# Install dependencies
+COPY package*.json .
+RUN npm ci --production=false
+
+# Copy the rest of the project files
 COPY . .
-RUN npm run build
 
-# serve stage
-FROM node:20-alpine
-WORKDIR /app
+# Build the Astro project (outputs to /app/dist)
+RUN npx astro build
 
-# Copiamos solo los archivos necesarios para servir
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package*.json ./
-RUN npm install --production
+####################################
+# Stage 2 – Production web server  #
+####################################
+FROM nginx:1.27-alpine AS production
 
-# Configurar variable de entorno para permitir techcrafted.dev como host
-ENV __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS=techcrafted.dev
+# Remove default site definition supplied by the base image
+RUN rm /etc/nginx/conf.d/default.conf
 
-EXPOSE 4321
+# Copy our custom Nginx virtual‑host configuration
+# (create this file at build‑time:  nginx/site.conf)
+COPY nginx/site.conf /etc/nginx/conf.d/
 
-# Servir la app con Astro preview, aceptando conexiones externas
-CMD ["npx", "astro", "preview", "--port", "4321", "--host", "0.0.0.0"]
+# Copy the static build produced by Astro
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+EXPOSE 80
+
+# Launch Nginx in the foreground
+CMD ["nginx", "-g", "daemon off;"]
