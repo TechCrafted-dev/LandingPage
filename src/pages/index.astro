@@ -21,19 +21,19 @@ import LogoTechCrafted from '@/assets/logo.webp';
             />
 
             <div  class="absolute inset-0 bg-gradient-to-br from-blue-600/30 via-cyan-400/25 to-teal-300/30">
-                <div id="section_tech" class="absolute top-1/3 sm:top-2/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-8">
+                <div id="section_tech" class="absolute top-1/3 sm:top-2/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center 2xl:gap-10 gap-4">
                     <img
                         src={LogoTechCrafted.src}
                         alt="TechCrafted Logo"
                         id="logo"
                         class="h-auto block overflow-hidden
-                               sm:scale-65 scale-60"
+                               xl:scale-65 scale-60"
                     />
-                    <cite class="text-black dark:text-white text-center not-italic sm:w-150 w-110 sm:text-2xl text-xl font-bold">
+                    <cite class="text-black dark:text-white text-center not-italic 2xl:w-300 sm:w-150 w-110 2xl:text-5xl xl:text-2xl text-xl font-bold">
                         Un espacio dedicado a la tecnología, el desarrollo
                         y grandes ideas que merecen compartirse.
                     </cite>
-                    <p class="text-black dark:text-white text-center not-italic w-128 sm:text-xl text-2xs font-bold">
+                    <p class="text-black dark:text-white text-center not-italic 2xl:w-200 w-128 2xl:text-4xl xl:text-lg text-2xs font-bold">
                         Descubre más o conecta conmigo en redes.
                     </p>
                 </div>
@@ -41,19 +41,21 @@ import LogoTechCrafted from '@/assets/logo.webp';
         </section>
 
         <!-- Enlaces de redes sociales -->
-        <div class="text-black dark:text-white fixed bottom-0 left-0 right-0 flex justify-center items-center gap-6 p-4 bg-black-800">
-            <a href="https://x.com/TRuHa83" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter fa-xl"></i></a>
-            <a href="https://github.com/TRuHa83" target="_blank" aria-label="GitHub"><i class="fab fa-github fa-xl"></i></a>
-            <a href="https://www.linkedin.com/in/sergio-trujillo-de-la-nuez-32a4a727/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin fa-xl"></i></a>
+        <div class="text-black dark:text-white fixed bottom-0 left-0 right-0 flex justify-center items-center 2xl:text-5xl text-2xl 2xl:gap-12 gap-6 p-4 bg-black-800">
+            <a href="https://x.com/TRuHa83" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://github.com/TRuHa83" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/sergio-trujillo-de-la-nuez-32a4a727/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         </div>
     </div>
 
     <div>
         <!-- Sección enlaces -->
         <section id="section_links"
-                 class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full sm:w-6xl sm:px-2 px-4 sm:flex flex-col sm:flex-row items-center justify-center gap-y-0 sm:gap-x-24">
+                 class="fixed flex-col items-center justify-center
+                        top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+                        2xl:w-2/3 sm:w-6xl w-full sm:px-2 px-4 sm:flex sm:flex-row 2xl:gap-x-128  sm:gap-x-24 gap-y-0">
             <!-- Noticias -->
-            <div class="relative sm:scale-100 scale-70 sm:w-1/3">
+            <div class="relative 2xl:scale-200 sm:scale-100 scale-70 sm:w-1/3">
                 <a href="/news" class="block">
                     <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-neutral-800 p-1 transition-shadow duration-500 shadow-[0_0_30px_rgba(0,_0,_0,_0.1)] hover:shadow-[0_0_50px_rgba(254,_226,_226,_0.7)] dark:hover:shadow-[0_0_30px_rgba(254,_226,_226,_0.5)] group">
                         <div class="relative bg-white dark:bg-neutral-800 rounded-xl p-8">
@@ -79,7 +81,7 @@ import LogoTechCrafted from '@/assets/logo.webp';
             </div>
 
             <!-- Portafolio -->
-            <div class="relative sm:scale-100 scale-70 sm:w-1/3">
+            <div class="relative 2xl:scale-200 sm:scale-100 scale-70 sm:w-1/3">
                 <a href="/portfolio" class="block">
                     <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-neutral-800 p-1 transition-shadow duration-500 shadow-[0_0_30px_rgba(0,_0,_0,_0.1)] hover:shadow-[0_0_50px_rgba(219,_234,_254,_0.7)] dark:hover:shadow-[0_0_30px_rgba(219,_234,_254,_0.5)] group">
                         <div class="relative bg-white dark:bg-neutral-800 rounded-xl p-8">
@@ -105,7 +107,7 @@ import LogoTechCrafted from '@/assets/logo.webp';
             </div>
 
             <!-- Blog -->
-            <div class="relative sm:scale-100 scale-70 sm:w-1/3">
+            <div class="relative 2xl:scale-200 sm:scale-100 scale-70 sm:w-1/3">
                 <a href="/blog" class="block">
                     <div class="relative overflow-hidden rounded-2xl bg-white dark:bg-neutral-800 p-1 transition-shadow duration-500 shadow-[0_0_30px_rgba(0,_0,_0,_0.1)] hover:shadow-[0_0_50px_rgba(209,_250,_229,_0.7)] dark:hover:shadow-[0_0_30px_rgba(209,_250,_229,_0.5)] group">
                         <div class="relative bg-white dark:bg-neutral-800 rounded-xl p-8">

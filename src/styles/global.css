@@ -11,3 +11,9 @@ body {
     margin: 0;
     width: 100%;
 }
+
+@theme {
+    --radius-5xl: 3rem;
+    --radius-6xl: 4rem;
+    --radius-7xl: 5rem;
+}

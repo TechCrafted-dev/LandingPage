@@ -14,30 +14,31 @@ import LogoTechCrafted from '@/assets/logo.webp';
             src={BackgroundImage.src}
             alt="Background Image"
             class="w-full h-full object-cover fixed inset-0 z-0
-                   opacity-100 brightness-100
-                   dark:brightness-20"
+                   opacity-100 brightness-100 dark:brightness-20
+                   scale-x-[-1] scale-y-[-1]"
         />
         <div  class="absolute inset-0 bg-gradient-to-br from-purple-700/40 via-pink-700/30 to-red-700/40">
-            <div id="section_tech" class="absolute top-2/5 sm:top-2/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col max-h-200 sm:max-h-180 items-center">
+            <div id="section_tech" class="absolute top-2/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+                                          flex flex-col 2xl:max-h-360 max-h-200 sm:max-h-180 items-center 2xl:gap-8">
                 <img
                     src={LogoTechCrafted.src}
                     alt="TechCrafted Logo"
                     id="logo"
                     class="h-auto block overflow-hidden
-                           sm:scale-60 scale-80"
+                           2xl:scale-60 sm:scale-60 scale-80"
                 />
-                <div class="w-80 sm:w-130 text-center py-14 rounded-4xl bg-white dark:bg-neutral-800 shadow shadow-black/20 dark:shadow-white/20 backdrop-blur-sm">
-                    <cite class="text-neutral-600 dark:text-white not-italic sm:w-150 w-110 sm:text-6xl text-4xl font-bold">
+                <div class="w-80 sm:w-130 2xl:w-260 text-center 2xl:py-28 py-14 2xl:rounded-6xl rounded-4xl bg-white dark:bg-neutral-800 shadow shadow-black/20 dark:shadow-white/20 backdrop-blur-sm">
+                    <cite class="text-neutral-600 dark:text-white not-italic 2xl:w-240 sm:w-150 w-110 2xl:text-9xl sm:text-6xl text-4xl font-bold">
                         404
                     </cite>
-                    <p class="text-neutral-500 dark:text-white not-italic sm:text-2xl text-xl font-bold">
+                    <p class="text-neutral-500 dark:text-white not-italic 2xl:text-5xl sm:text-2xl text-xl font-bold">
                         Página no encontrada
                     </p>
                 </div>
-                <h3 class="mb-3 text-white text-xl font-semibold text-center py-8">Lo sentimos, la página que estás buscando no existe</h3>
+                <h3 class="mb-3 text-white 2xl:text-4xl text-xl font-semibold text-center py-8">Lo sentimos, la página que estás buscando no existe</h3>
                 <div class="flex justify-center">
-                  <a href="/" class="flex items-center gap-2 bg-neutral-500 dark:bg-neutral-700 rounded-2xl p-4 shadow-md">
-                    <i class="fas fa-home fa-lg"></i>
+                  <a href="/" class="flex items-center gap-2 bg-neutral-500 dark:bg-neutral-700 2xl:text-4xl text-lg 2xl:rounded-3xl rounded-2xl 2xl:p-9 p-4 shadow-md">
+                    <i class="fas fa-home"></i>
                     <span class="text-white dark:text-white">Volver al inicio</span>
                   </a>
                 </div>
@@ -45,10 +46,10 @@ import LogoTechCrafted from '@/assets/logo.webp';
         </div>
 
         <!-- Enlaces de redes sociales -->
-        <div class="text-black dark:text-white fixed bottom-0 left-0 right-0 flex justify-center items-center gap-6 p-4 bg-black-800">
-            <a href="https://x.com/TRuHa83" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter fa-xl"></i></a>
-            <a href="https://github.com/TRuHa83" target="_blank" aria-label="GitHub"><i class="fab fa-github fa-xl"></i></a>
-            <a href="https://www.linkedin.com/in/sergio-trujillo-de-la-nuez-32a4a727/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin fa-xl"></i></a>
+        <div class="text-black dark:text-white fixed bottom-0 left-0 right-0 flex justify-center items-center 2xl:text-5xl text-2xl 2xl:gap-12 gap-6 p-4 bg-black-800">
+            <a href="https://x.com/TRuHa83" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://github.com/TRuHa83" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/sergio-trujillo-de-la-nuez-32a4a727/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         </div>
     </div>
 </Layout>
