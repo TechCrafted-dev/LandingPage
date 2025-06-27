@@ -2,7 +2,7 @@
 
 Sitio web personal dedicado a la tecnología, el desarrollo y grandes ideas que merecen compartirse.
 
-##️ Tecnologías
+## Tecnologías
 
 - Astro
 - Tailwind CSS
@@ -12,7 +12,8 @@ Sitio web personal dedicado a la tecnología, el desarrollo y grandes ideas que 
 ## Estructura del Proyecto
 
 ```text
-/
+.
+│
 ├── public/
 │   ├── icon_48x48.webp
 │   ├── icon_180x180.webp
@@ -20,21 +21,24 @@ Sitio web personal dedicado a la tecnología, el desarrollo y grandes ideas que 
 │   ├── icon_512x512.webp
 │   ├── manifest.webmanifest
 │   └── og-image.jpg
+│
 ├── src/
 │   ├── assets/
 │   │   ├── background.webp
 │   │   └── logo.webp
+│   │
 │   ├── components/
 │   │   └── ThemeToggle.astro
+│   │
 │   ├── layouts/
 │   │   └── Layout.astro
+│   │
 │   ├── pages/
-│   │   ├── index.astro
-│   │   ├── blog/
-│   │   ├── news/
-│   │   └── portfolio/
+│   │   └── index.astro
+│   │
 │   └── styles/
 │       └── global.css
+│
 └── package.json
 ```
 
