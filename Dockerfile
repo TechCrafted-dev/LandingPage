@@ -14,6 +14,9 @@ COPY package*.json package-lock*.json ./
 # Usamos 'npm install' para instalar dependencias.
 RUN npm install
 
+ARG VCS_REF
+LABEL org.opencontainers.image.revision=$VCS_REF
+
 # Copy the rest of the project files
 COPY . .
 

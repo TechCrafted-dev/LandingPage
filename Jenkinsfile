@@ -9,7 +9,11 @@ pipeline {
     stages {
         stage('Build image') {
             steps {
-                sh 'docker build --pull -t ${TAG} .'
+                sh """
+                  docker build --pull \
+                               --build-arg VCS_REF=${GIT_COMMIT} \
+                               -t ${TAG} -t ${IMAGE}:${GIT_COMMIT} .
+                """
             }
         }
         stage('Redeploy') {
