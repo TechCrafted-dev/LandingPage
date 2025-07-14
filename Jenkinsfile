@@ -2,10 +2,9 @@ pipeline {
     agent any
 
     environment {
-        IMAGE     = 'techcrafted'
-        CONTAINER = 'techcrafted'
+        NAME = 'techcrafted'
         PORT      = '4321'
-        TAG       = "${IMAGE}:latest"
+        TAG       = "${NAME}:latest"
         VCS_REF   = "${GIT_COMMIT}"   // cache-buster opcional
     }
 
@@ -23,8 +22,8 @@ pipeline {
         stage('Redeploy') {
             steps {
                 sh '''
-                  docker ps -q --filter "name=${CONTAINER}" | xargs -r docker rm -f
-                  docker run -d --name ${CONTAINER} \
+                  docker rm -f ${NAME}
+                  docker run -d --name ${NAME} \
                     --restart unless-stopped \
                     -p ${PORT}:80 ${TAG}
                 '''
