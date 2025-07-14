@@ -13,8 +13,8 @@ pipeline {
             steps {
                 sh """
                   docker build --pull \
-                               --build-arg VCS_REF=${VCS_REF} \
-                               -t ${TAG} .
+                        --build-arg VCS_REF=${VCS_REF} \
+                        -t ${TAG} .
                 """
             }
         }
@@ -22,10 +22,11 @@ pipeline {
         stage('Redeploy') {
             steps {
                 sh '''
-                  docker rm -f ${NAME}
-                  docker run -d --name ${NAME} \
-                    --restart unless-stopped \
-                    -p ${PORT}:80 ${TAG}
+                    docker stop ${NAME} || true
+                    docker rm   ${NAME} || true
+                    docker run -d --name ${NAME} \
+                        --restart unless-stopped \
+                        -p ${PORT}:80 ${TAG}
                 '''
             }
         }
