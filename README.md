@@ -123,5 +123,5 @@ Distribuido bajo la licencia **MIT**. Consulta `LICENSE` para más información.
 ---
 
 <p align="center">
-  Hecho con 🤍 por <a href="https://techcrafted.dev">Sergio Trujillo de la Nuez</a>
+  Hecho con 🤍 por <a href="https://github.com/TRuHa83">Sergio Trujillo de la Nuez</a>
 </p>
