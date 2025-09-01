@@ -2,44 +2,53 @@
 import '@/styles/global.css';
 
 import ThemeToggle from '../components/ThemeToggle.astro';
+
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const {
+    title = 'TechCrafted.dev – Tecnología, IA y Desarrollo',
+    description = 'Un espacio dedicado a la tecnología, el desarrollo y grandes ideas que merecen compartirse.'
+} = Astro.props;
+
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const ogImageUrl = Astro.site ? new URL('/og-image.jpg', Astro.site) : undefined;
 ---
 
 <!doctype html>
-<html lang="es_ES">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+        <meta name="description" content={description}>
 
-		<!-- Open Graph (usado por Telegram, Discord, LinkedIn...) -->
-		<meta property="og:title" content="TechCrafted.dev – Tecnología, IA y Desarrollo">
-		<meta property="og:description" content="Un espacio dedicado a la tecnología, el desarrollo y grandes ideas que merecen compartirse.">
-		<meta property="og:image" content="https://techcrafted.dev/og-image.jpg">
-		<meta property="og:url" content="https://techcrafted.dev">
+        {canonicalUrl && <link rel="canonical" href={canonicalUrl.href} />}
+
+		<!-- Open Graph -->
+		<meta property="og:title" content={title}>
+		<meta property="og:description" content={description}>
+        {ogImageUrl && <meta property="og:image" content={ogImageUrl.href} />}
+		{canonicalUrl && <meta property="og:url" content={canonicalUrl.href} />}
 		<meta property="og:type" content="website">
 
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="TechCrafted.dev – Tecnología, IA y Desarrollo">
-		<meta name="twitter:description" content="Un espacio dedicado a la tecnología, el desarrollo y grandes ideas que merecen compartirse.">
-		<meta name="twitter:image" content="https://techcrafted.dev/og-image.jpg">
+		<meta name="twitter:title" content={title}>
+		<meta name="twitter:description" content={description}>
+		{ogImageUrl && <meta name="twitter:image" content={ogImageUrl.href} />}
 
-		<title>TechCrafted.dev</title>
+		<title>{title}</title>
 
-		<!-- Favicon básico -->
+		<!-- Favicons & PWA -->
 		<link rel="icon" type="image/webp" sizes="48x48" href="/icon_48x48.webp">
-
-		<!-- Icono para dispositivos Apple -->
 		<link rel="apple-touch-icon" type="image/webp" sizes="180x180" href="/icon_180x180.webp">
-
-		<!-- Iconos Android / PWA -->
 		<link rel="icon" type="image/webp" sizes="192x192" href="/icon_192x192.webp">
 		<link rel="icon" type="image/webp" sizes="512x512" href="/icon_512x512.webp">
-
-		<!-- Manifest (si usas PWA) -->
 		<link rel="manifest" href="/manifest.webmanifest">
 
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 		<script async defer src="https://stats.techcrafted.dev/script.js" data-website-id="77f28db1-2409-4e33-8e45-c81b3bacc260" data-domains="techcrafted.dev"></script>
 	</head>
 	<body>
