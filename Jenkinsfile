@@ -61,7 +61,7 @@ pipeline {
 
         /* ---------- DEPLOY ---------- */
         stage('Deploy to PROD') {
-            when { branch 'main' }
+            when { branch 'master' }
             steps {
                 sh '''
                 docker stop ${PROD_NAME} || true
@@ -77,7 +77,7 @@ pipeline {
 
         /* ---------- LIMPIEZA ---------- */
         stage('House-keeping images') {
-            when { branch 'main' }
+            when { branch 'master' }
             steps {
                 sh '''
                 keep=5
