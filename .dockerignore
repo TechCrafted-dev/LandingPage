@@ -1,29 +1,56 @@
-# Carpetas pesadas o generadas automáticamente
-node_modules
-dist
-.astro
-.pnpm
-.pnpm-debug.log
-
-# Archivos y carpetas de control de versiones
-.git
+# Git y Docker
+.git/
 .gitignore
-
-# Archivos de entorno y configuración local
-.env
-*.env
-.idea
-.vscode
-
-# Documentación o archivos que no se usan en producción
-README.md
-*.md
-
-# Archivos de configuración de despliegue que no necesitas copiar
+.dockerignore
 Dockerfile
 docker-compose.yml
-deploy.sh
 
-# Archivos de lock (opcional si no quieres usarlos en build)
-pnpm-lock.yaml
-pnpm-workspace.yaml
+# Entornos virtuales locales y dependencias
+venv/
+env/
+.venv/
+.env/
+
+# Archivos de configuración y secretos
+data/config.json
+*.env
+
+# Artefactos de Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Archivos del IDE
+.idea/
+.vscode/
+
+# Documentación y archivos auxiliares
+README.md
+entrypoint.sh
+*.md
+
+# Archivos del sistema operativo
+.DS_Store
+
+# Informes de pruebas
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Dependencias de Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Salida de compilación
+dist/
+
+# Archivos de Astro
+.astro/
+
+# CI/CD
+Jenkinsfile
+
+# Configuración de Tailwind
+tailwind.config.js
+tailwind.config.mjs
