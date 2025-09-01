@@ -54,7 +54,6 @@ pipeline {
                 sh """
                 docker build --pull --no-cache \
                     --label project=${REPO_NAME} \
-                    --build-arg API_BASE=${API_BASE} \
                     -t ${TAG_UNIQ} -t ${TAG_LATEST} .
                 """
             }
@@ -71,7 +70,6 @@ pipeline {
                 docker run -d --name ${PROD_NAME} \
                     --restart unless-stopped \
                     -p ${PROD_PORT}:80 \
-                    --env API_BASE=${API_BASE} \
                     ${TAG_LATEST}
                 '''
             }
